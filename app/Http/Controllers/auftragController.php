@@ -39,18 +39,33 @@ class auftragController extends Controller
      $auftraege = auftrag::where('ag',$userid)->orderBy('ab', 'asc')->get();
      $lieferauftraege = auftrag::where('ag', '!=' , $userid)->where('an' , $userid)->orderBy('ab', 'asc')->get();
      return  View::make('auftragverwalten', compact('auftraege','lieferauftraege'));
-
-     //\Redirect::route('auftragverwalten')->with('auftragverwalten', $auftraege);
-     //$auftrag[0]->punkte
     }
 
-    public function liefererzeigen()
+    public function liefererzeigen(Request $request)
     {
-     $userid=Auth::user()->userid;
+    // sinnvolle Auftraege anzeigen
+     $userid=Auth::user()->userid;   
      $auftraege = auftrag::where('ag', '!=' , $userid)->whereNull('an')->get();
-     //orderBy('punkte', 'desc')
+     $sinnvolleAuftr = array();
+     $start = $request->input('start');
+     $ziel = $request->input('ziel');
+
+     $distance =  $this->getDist($start, $ziel);
+
+     foreach ($auftraege as $auftrag) {
+        $zz1 = $auftrag -> absAdr;
+        $zz2 = $auftrag -> empfAdr;
+        $umweg = $this->getDist($start, $zz1) + $this->getDist($zz1, $zz2) + $this->getDist($zz2, $ziel);
+        if($distance < 10 && $umweg < 1.5 * $distance) {
+            array_push($sinnvolleAuftr, $auftrag);
+        } elseif ($distance < 100 && $distance >10 && $umweg < 1.3 * $distance) {
+            array_push($sinnvolleAuftr, $auftrag);
+        }elseif ($distance >= 100 && $umweg < 1.1 * $distance) {
+            array_push($sinnvolleAuftr, $auftrag);
+        }
+     }
      
-     return View::make('auftragannehmen', compact('auftraege'));
+     return View::make('auftragannehmen', compact('sinnvolleAuftr'));
     }
 
     public function annehmen(Request $request)
@@ -58,7 +73,7 @@ class auftragController extends Controller
         $userid=Auth::user()->userid;
         $username=Auth::user()->name;
         $auftragid = $request->input('auftragid');
-
+        $zeitfenster = $request->input('zeitfenster');
         $auftrag = auftrag::where('auftragID', $auftragid)->first();
         $auftrag->an = $userid;
         $auftrag->anName = $username;
@@ -81,14 +96,15 @@ class auftragController extends Controller
         $name = $emailEmpf->name;
         $inhalt ="Hallo " .$name.  ", \r\n\r\nIhr Auftragstatus hat die folgende Änderung: \r\n" .$username. 
                  " hat Ihren Auftrag (AuftragID: ".$auftragid. 
-                 ") angenommen.\r\n\r\nMit freundlichen Grüßen \r\n\r\nIhr Leafpacket-Team";
+                 ") angenommen. Er kommt um ".$zeitfenster." Uhr. \r\n\r\nMit freundlichen Grüßen \r\n\r\nIhr Leafpacket-Team";
 
         Mail::raw("$inhalt", function($message)use($to)
         {
             $message->to($to)->subject('Auftragstatus geändert');
         });
 
-        return back() ->with('message','Sie haben den Auftrag erfolgreich angenommen');
+        return \Redirect::route('routeeingeben')->with('message', 'Sie haben den Auftrag erfolgreich angenommen');
+
     }
 
 
@@ -171,6 +187,22 @@ class auftragController extends Controller
         }else{
             return back() ->with('falsch','Der eingegebene Code ist nicht vergeben');
         }
+    }
+
+
+    public function getDist($addr, $addr2)
+    {
+        $url = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' . urlencode ( $addr ) . '&destinations=' . urlencode ( $addr2 ) . '&key=';
+        $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            $response = json_decode(curl_exec($ch), true);
+            //If google responds with a status of OK
+            //Extract the distance text:
+            if($response['status'] == "OK"){
+                $dist = $response['rows'][0]['elements'][0]['distance']['value'];
+            }
+        return $dist/1000;
     }
 }
 

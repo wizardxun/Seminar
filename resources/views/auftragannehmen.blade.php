@@ -1,23 +1,15 @@
 @extends('layouts.layout')
 
 @section('content')
-     <br />
-     @if(Session::has('message'))
-        <div class="row">
-           <div class="col-md-4 col-md-offset-3">
-             <div class="alert alert-success alert-dismissable">
-               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-               {{ Session::get('message') }}
-           </div>
-          </div>
-        </div>
-    @endif
+
+
+
   	 
-     @if(count($auftraege)>0)
-      <table>
-        <tr>
+     @if(count($sinnvolleAuftr)>0)
+      <table class="w3-table-all w3-hoverable">
+        <tr >
           <td>AuftragID &nbsp</td>
-          <td>Punktevergabe &nbsp</td>
+          <td>Punkte &nbsp</td>
           <td>Absender &nbsp</td>
           <td>Adresse des Absenders &nbsp</td>
           <td>PLZ des Absenders &nbsp</td>
@@ -25,8 +17,9 @@
           <td>Adresse des Empfängers &nbsp</td>
           <td>PLZ des Empfängers &nbsp</td>
           <td>Datum</td>
+          <td></td>
         </tr>
-        @foreach($auftraege as $auftrag)
+        @foreach($sinnvolleAuftr as $auftrag)
         <tr>
           <td>{{$auftrag->auftragID}} &nbsp</td>
           <td>{{$auftrag->punkte}} &nbsp</td>
@@ -41,6 +34,7 @@
               <form action="annehmen" method="post">
                 <input type="hidden" name= "_token" value="{{ csrf_token() }}">
                 <input type="hidden" name= "auftragid" value="{{ $auftrag->auftragID }}">
+                <input type="text" name= "zeitfenster" placeholder="Ich komme um">
                 <button type = "submit">annehmen</button>
               </form>
           </td>
@@ -49,6 +43,7 @@
       </table>
 
       @else
-      Zur Zeit gibt es keinen Liefer-Auftrag.
+      <br />
+      <center><h4>Zur Zeit gibt es keinen Lieferauftrag</h4></center>
       @endif
 @endsection

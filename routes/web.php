@@ -24,8 +24,6 @@ Route::get('/register', function () {
 Route::post('/logout','loginController@logout');
 Auth::routes();
 
-//->middleware('auth');
-
 Route::get('/senden',function(){
 	return view('auftraganlegen');
 })->middleware('auth');
@@ -40,15 +38,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/auftraganzeigen',"auftragController@anzeigen");
 
-Route::get('/liefern',"auftragController@liefererzeigen");
+Route::get('/liefern', function() {
+	return view('routeeingeben');
+})->name('routeeingeben');
 
 Route::post('/annehmen',"auftragController@annehmen");
 
 Route::get('/konto', function(){
 	return view('konto');
 });
-
-Route::get('/test',"auftragController@test");
 
 Route::post('/liefererbestaetigen', "auftragController@liefererbestaetigen");
 
@@ -59,4 +57,6 @@ Route::get('/bestaetigen', function(){
 });
 
 Route::post('/bestaetigt', "auftragController@empfbestaetigen");
+
+Route::post('/routeeingeben', "auftragController@liefererzeigen");
 

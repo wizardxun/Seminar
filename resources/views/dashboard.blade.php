@@ -24,7 +24,7 @@
     <div class="item">
       <img src="http://localhost/seminar/step2.png" alt="step2">
       <div class="carousel-caption">
-        <h3>Schritt 2: Bei Leafpacket Liefer-Auftrag anlegen</h3>
+        <h3>Schritt 2: Bei Leafpacket Lieferauftrag anlegen</h3>
       </div>
     </div>
 

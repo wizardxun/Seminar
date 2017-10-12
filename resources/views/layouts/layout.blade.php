@@ -9,6 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="http://localhost/Seminar/formstyle.css"/>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="/maps/documentation/javascript/demos/demos.css">
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {

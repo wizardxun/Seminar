@@ -2,7 +2,7 @@
 
 @section('content')
 
-<table>
+<table class="w3-table-all w3-hoverable">
 	<tr>
 		<td>Name &nbsp</td>
 		<td>{{ Auth::user()->name }}</td>
