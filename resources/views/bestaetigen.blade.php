@@ -165,7 +165,7 @@ fieldset {
             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Bestätigen</button>
 
         </form>
-        <center><a href="http://localhost:8000">Zum Loginseite</a></center>
+        <center><a href="http://localhost:8000">Zur Loginseite</a></center>
     </div>
      
 

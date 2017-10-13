@@ -4,7 +4,7 @@
  <br />
  @if(Session::has('message'))
     <div class="row">
-       <div class="col-md-4 col-md-offset-3">
+       <div class="col-md-6 col-md-offset-3">
          <div class="alert alert-success alert-dismissable">
            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
            {{ Session::get('message') }}
@@ -13,7 +13,7 @@
     </div>
 @endif
 
-    <h4>Mein Auftrag als Absender</h4>
+    <center><h4>Meine Aufträge als Absender</h4></center>
   	@if(count($auftraege)>0)
   	<table class="w3-table-all w3-hoverable">
       <tr>
@@ -55,7 +55,7 @@
            <td></td>
            @endif
   			@else
-  			<td>auftrag noch nicht angenommen</td>
+  			<td>Auftrag noch nicht angenommen</td>
         <td></td>
   			@endif
   		</tr>
@@ -66,7 +66,7 @@
   	
   	@endif
     <br />
-    <h4>Mein Auftrag als Lieferer</h4>
+    <center><h4>Meine Aufträge als Lieferer</h4></center>
        @if(count($lieferauftraege)>0)
         <table class="w3-table-all w3-hoverable">
           <tr>

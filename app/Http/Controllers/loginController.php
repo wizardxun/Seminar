@@ -26,7 +26,4 @@ class loginController extends Controller
         
         return back() -> with('message','Benutzername oder Passwort ist ungültig, versuchen Sie bitte erneut!');
     }
-
-
-
 }

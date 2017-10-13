@@ -58,8 +58,8 @@
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mein Konto<span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="http://localhost:8000/konto">Konto Verwalten</a></li>
-                <li><a href="http://localhost:8000/auftraganzeigen">Auftrag Verwalten</a></li>
+                <li><a href="http://localhost:8000/konto">Konto verwalten</a></li>
+                <li><a href="http://localhost:8000/auftraganzeigen">Auftrag verwalten</a></li>
             </ul>
         </li>           
       </ul>

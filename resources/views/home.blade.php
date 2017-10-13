@@ -183,9 +183,9 @@ fieldset {
                     <br />
                     <form action="/logout" method="post" id="logout_form">
                         {{ csrf_field() }}
-                     <h5>Hallo {{ Auth::user()->name }} !</h5>
+                     <h5>Hallo {{ Auth::user()->name }}!</h5>
                      <h5>Danke für die Anmeldung!</h5>
-                    <a href="#" onclick="document.getElementById('logout_form').submit()"><h5>los geht's zum Login</h5></a>
+                    <a href="#" onclick="document.getElementById('logout_form').submit()"><h5>Los geht's zum Login</h5></a>
                     </form>
                 </div>
             </div>

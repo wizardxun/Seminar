@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>leafpaket</title>
+    <title>leafpacket</title>
          
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="
@@ -25,7 +25,7 @@
              <input type="hidden" name= "_token" value="{{ csrf_token() }}">
              <center>
              <div class="col-3">
-                 <input type="text" class="w3-input w3-border" name="username" placeholder="E-mail">
+                 <input type="text" class="w3-input w3-border" name="username" placeholder="E-Mail">
                  <br />
              </div>
 
@@ -49,6 +49,6 @@
         </center>
           
  
-        <br/><center><font size="2px"color="grey">Noch kein konto? Jetzt <a href="http://localhost:8000/register">registrieren</a>!</font></center>
+        <br/><center><font size="2px"color="grey">Noch kein Konto? Jetzt <a href="http://localhost:8000/register">registrieren</a>!</font></center>
   </body>
 </html>

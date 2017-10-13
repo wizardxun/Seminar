@@ -19,7 +19,7 @@
 	</tr>
 
 	<tr>
-		<td>Registierungsdatum &nbsp</td>
+		<td>Registrierungsdatum &nbsp</td>
 		<td>{{ Auth::user()->created_at }}</td>
 	</tr>
 

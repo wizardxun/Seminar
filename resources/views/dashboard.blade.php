@@ -31,14 +31,14 @@
     <div class="item">
       <img src="http://localhost/seminar/step3.png" alt="step3">
       <div class="carousel-caption">
-        <h3>Schritt 3: Das Paket dem Zulieferer übergeben</h3>
+        <h3>Schritt 3: Das Paket dem Zusteller übergeben</h3>
       </div>
     </div>
 
     <div class="item">
       <img src="http://localhost/seminar/step4.png" alt="step4">
       <div class="carousel-caption">
-        <h3>Schritt 4: Der Zulieferer liefert das Paket zu</h3>
+        <h3>Schritt 4: Der Zusteller liefert das Paket aus</h3>
       </div>
     </div>
 
@@ -52,7 +52,7 @@
     <div class="item">
       <img src="http://localhost/seminar/step6.png" alt="step6">
       <div class="carousel-caption">
-        <h3>Schritt 6: Den Auftrag wird von beiden bestätigt</h3>
+        <h3>Schritt 6: Der Auftrag wird von beiden bestätigt</h3>
       </div>
     </div>
 
